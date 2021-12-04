@@ -5,17 +5,29 @@ import { Form, FormGroup, Label, Col, Input, Button } from 'reactstrap';
 
 function FormDemo({form, setForm, errors, setErrors, handleSubmitForm}) {
 
-
     
 
     function handleChangeForm(e) {
-        const name = e.target.name;
+        const {name, type, value, checked} = e.target;
+
+        console.log(type, value)
+        let newValue = '';
+
+        switch(type) {
+          case 'checkbox': {
+            newValue = checked
+            break;
+          }
+          default: {
+            newValue = value;
+            break;
+          }
+        }
 
         setForm(prevState => {
             return {
                 ...prevState,
-                [name]: e.target.value,
-
+                [name]: newValue,
             }
         })
     }
@@ -173,7 +185,7 @@ function FormDemo({form, setForm, errors, setErrors, handleSubmitForm}) {
                 <Input
                   name="gender"
                   type="radio"
-                  value={form.gender}
+                  value="male"
                   onChange={handleChangeForm}
                 />
                 {' '}
@@ -185,8 +197,7 @@ function FormDemo({form, setForm, errors, setErrors, handleSubmitForm}) {
                 <Input
                   name="gender"
                   type="radio"
-                //   onClick={function noRefCheck(){}}
-                  value={form.gender}
+                  value="female"
                   onChange={handleChangeForm}
                 />
                 {' '}

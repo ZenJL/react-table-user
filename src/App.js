@@ -21,8 +21,8 @@ function App() {
       gender: '',
       policy: '',
     }
-
   );
+  const [users, setUsers] = useState([]);
 
   const [errors, setErrors] = useState(false);
 
@@ -38,7 +38,9 @@ function App() {
     if(form.name === '' || form.email === '' || form.password === '' || form.confirmPassword === '') return setErrors(true)
 
     setErrors(false);
-    
+    setUsers(prevState => {
+      return [form, ...prevState]
+    })
     setDisplayTable('block');
   }
   
@@ -54,7 +56,7 @@ function App() {
         
         <FormDemo form={form} setForm={setForm} errors={errors} setErrors={setErrors} handleSubmitForm={handleSubmitForm} />
 
-        <TableUser form={form} displayTable={displayTable} />
+        <TableUser users={users} displayTable={displayTable} />
         
       </div>
 

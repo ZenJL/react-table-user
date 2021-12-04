@@ -2,7 +2,7 @@ import React from 'react'
 
 import {Table} from 'reactstrap';
 
-function TableUser({form, displayTable}) {
+function TableUser({users, displayTable}) {
     return (
         <div style={{display: displayTable}}>
             <hr/>
@@ -43,32 +43,35 @@ function TableUser({form, displayTable}) {
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <th scope="row">
-                            {form.email}
-                        </th>
-                        <td>
-                            {form.name}
-                        </td>
-                        <td>
-                            {form.password}
-                        </td>
-                        <td>
-                            {form.confirmPassword}
-                        </td>
-                        <td>
-                            {form.status}
-                        </td>
-                        <td>
-                            {form.bio}
-                        </td>
-                        <td>
-                            {form.gender}
-                        </td>
-                        <td>
-                            {form.policy}
-                        </td>
-                    </tr>
+                    {users.map(user => (
+                        <tr>
+                            <th scope="row">
+                                {user.email}
+                            </th>
+                            <td>
+                                {user.name}
+                            </td>
+                            <td>
+                                {user.password}
+                            </td>
+                            <td>
+                                {user.confirmPassword}
+                            </td>
+                            <td>
+                                {user.status}
+                            </td>
+                            <td>
+                                {user.bio}
+                            </td>
+                            <td>
+                                {user.gender}
+                            </td>
+                            <td>
+                                {user.policy ? 'agree' : 'not agree'}
+                            </td>
+                        </tr>
+                    ))}
+                    
                 </tbody>
             </Table>
 
