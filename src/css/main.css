@@ -1,0 +1,17 @@
+.container {
+	padding: var(--bs-gutter-x,.75rem);
+	display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: center;
+
+}
+
+.row {
+	justify-content: center;
+    align-items: center;
+}
+
+.form-label {
+    margin-bottom: 0;
+}
